@@ -4,7 +4,9 @@ Prototipo educativo (UNIMINUTO) para **optimizar la lámina de riego**, **estima
 Basado en **ET₀ (FAO Penman–Monteith)**, **Kc (FAO-56)** y **eficiencia del método de riego (η)**.
 
 **Demo:** https://jhoncastiblanco06.github.io/simulador-riego/  
+
 **Video (YouTube):** https://www.youtube.com/watch?v=_N6mc1o2rEg
+
 **Web (web):** https://simulador-riego.fjlgroup.site
 
 ---
