@@ -1,6 +1,6 @@
 # Simulador de Riego Eficiente – Colombia 🌱💧
 
-Prototipo educativo (UNIMINUTO) para **optimizar la lámina de riego**, **estimar costos ** y **reducir el impacto hídrico** en el sector rural colombiano.  
+Prototipo educativo (UNIMINUTO) para **optimizar la lámina de riego**, estimar costos y **reducir el impacto hídrico** en el sector rural colombiano.  
 Basado en  **eficiencia del método de riego **.
 
 **Demo:** https://github.com/jhoncastiblanco06/simulador-riego
