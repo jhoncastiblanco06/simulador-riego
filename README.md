@@ -1,9 +1,9 @@
 # Simulador de Riego Eficiente – Colombia 🌱💧
 
 Prototipo educativo (UNIMINUTO) para **optimizar la lámina de riego**, estimar costos y **reducir el impacto hídrico** en el sector rural colombiano.  
-Basado en  **eficiencia del método de riego **.
+Basado en  eficiencia del método de riego .
 
-**Demo:** https://github.com/jhoncastiblanco06/simulador-riego
+**GitHub:** https://github.com/jhoncastiblanco06/simulador-riego
 
 **Video (YouTube):** https://www.youtube.com/watch?v=_N6mc1o2rEg
 
@@ -29,14 +29,14 @@ El **Simulador de Riego Eficiente** permite a un **agricultor**:
 
 ## Características
 
-- 🔧 Configuración completa del escenario (cultivo/etapa/suelo/región/método/área/horario/lluvia/tarifa).  
+- 🔧 Configuración completa del escenario cultivo, etapa, suelo, región, método, área, horario, lluvia, tarifa.  
 - 🧮 Cálculo con visualización.  
-- 🎯 Recomendación de litros ajustada por **η** (gravedad/aspersión/goteo) y **lluvia**.  
+- 🎯 Recomendación de litros ajustada por gravedad, aspersión, goteo y **lluvia**.  
 - 💸 Costo estimado en **COP**.  
 - 📈 Gráficas de **productividad** y **análisis de sensibilidad** con exportación a **PNG**.  
 - 📅 **Calendario semanal** de riego y exportación a **CSV**.  
-- 🧰 **Historial** (guardar/cargar/limpiar), **comparación** de escenarios, exportar **CSV**, importar **JSON**.  
-- 📚 **Fuentes oficiales** (tablas y bibliografía en APA) para transparencia.
+- 🧰 **Historial** (guardar,cargar,limpiar), **comparación** de escenarios, exportar **CSV**, importar **JSON**.  
+- 📚 **Fuentes oficiales** para transparencia.
 
 ---
 
