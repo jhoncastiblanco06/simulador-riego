@@ -65,6 +65,16 @@ El **Simulador de Riego Eficiente** permite a un **agricultor**:
 
 ---
 
+
+---
+
+## Casos de uso
+
+<img width="1397" height="793" alt="image" src="https://github.com/user-attachments/assets/2262e4eb-3345-4d19-ac27-c263b61feb67" />
+
+
+---
+
 ## Requerimientos
 
 **Funcionales:**
