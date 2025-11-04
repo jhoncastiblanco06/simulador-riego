@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Acerca de — Simulador de Riego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="bg-white text-slate-800">
+    <!-- Header fijo con volver -->
+    <header
+      class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200"
+    >
+      <div
+        class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="../index.html"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border hover:bg-slate-50"
+          >
+            <span class="text-lg">←</span>
+            <span class="text-sm">Volver al simulador</span>
+          </a>
+          <span class="hidden sm:inline text-slate-300">|</span>
+          <h1 class="text-lg font-semibold">Acerca de</h1>
+        </div>
+        <a
+          href="#metodologia"
+          class="text-sm text-slate-600 hover:text-emerald-700"
+          >Ir a metodología</a
+        >
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-8">
+      <section class="space-y-2">
+        <h2 class="text-2xl font-bold">Propósito</h2>
+        <p>
+          Este simulador es un <strong>prototipo educativo</strong> para apoyar
+          decisiones de riego en contextos rurales, con especial foco en la
+          <strong>eficiencia</strong> y el <strong>ahorro de agua</strong>.
+          Busca ser simple, visual y útil para comparar escenarios y aprender
+          “cuánto regar y cuándo”.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold">Características</h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>
+            Configuración de cultivo, etapa fenológica, clima (ET₀), área,
+            método de riego (η), lluvia y horario.
+          </li>
+          <li>
+            Cálculo de <strong>ETc = ET₀ × Kc</strong>, recomendación de
+            <strong>litros</strong>, <strong>costo estimado</strong> y
+            <strong>productividad</strong> (proxy).
+          </li>
+          <li>
+            Gráficas (Chart.js), historial con comparación, exportaciones
+            (PNG/CSV) e importación (JSON).
+          </li>
+          <li>
+            Recomendador de volumen óptimo para una meta (%) y análisis de
+            sensibilidad agua→productividad.
+          </li>
+          <li>Calendario semanal recomendado exportable (CSV).</li>
+        </ul>
+      </section>
+
+      <section id="metodologia" class="space-y-3">
+        <h2 class="text-xl font-semibold">Metodología (resumen)</h2>
+        <p>
+          Se aplica el concepto estándar de
+          <strong>evapotranspiración del cultivo (ETc)</strong> como
+          <strong>ETc = ET₀ × Kc</strong>, donde ET₀ es la demanda atmosférica
+          de referencia y Kc ajusta por cultivo/etapa. Luego se comparan los
+          <strong>aportes</strong> (lluvia + riego efectivo) contra ETc para
+          construir un <strong>indicador de productividad</strong> (%), con
+          ajustes simples por horario y cultivo. Los litros recomendados cubren
+          el <em>déficit</em> considerando la eficiencia del método.
+        </p>
+        <div class="rounded-xl border p-4 bg-slate-50 text-sm">
+          <p><strong>Claves:</strong></p>
+          <ul class="list-disc pl-6">
+            <li>1 mm sobre 1 m² = 1 L.</li>
+            <li>Riego efectivo (mm) = (Agua [L] / Área [m²]) × η.</li>
+            <li>
+              Litros recomendados = (max(0, ETc − lluvia) × Área [m²]) / η.
+            </li>
+          </ul>
+        </div>
+        <p class="text-sm text-slate-600">
+          <em>Nota:</em> Para uso técnico profesional se sugiere implementar
+          balance de agua multi-día, Kc por fechas específicas y ET₀ calculada
+          con datos meteorológicos (p. ej., método Penman-Monteith).
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold">Limitaciones</h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>
+            Modelo diario y simplificado. No acumula agua en el suelo entre
+            días.
+          </li>
+          <li>ET₀ y Kc son valores representativos (no medidos en sitio).</li>
+          <li>La lluvia efectiva puede diferir de la lluvia total real.</li>
+          <li>
+            La eficiencia (η) depende de diseño, operación y mantenimiento del
+            sistema.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold">Tecnologías</h2>
+        <p>HTML · TailwindCSS (CDN) · JavaScript · Chart.js · localStorage</p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold">Autoría</h2>
+        <p><strong>Autor:</strong> Jhon Castiblanco</p>
+        <p>
+          <strong>Curso:</strong> Electiva CMD — Ingeniería y Desarrollo
+          Regional (UNIMINUTO)
+        </p>
+      </section>
+
+      <footer class="pt-6 text-xs text-slate-500">
+        UNIMINUTO · Electiva CMD · Ingeniería y Desarrollo Regional — Acerca del
+        simulador (versión educativa)
+      </footer>
+    </main>
+  </body>
+</html>

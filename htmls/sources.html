@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fuentes oficiales — Simulador de Riego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body class="bg-white text-slate-800">
+    <!-- NAV -->
+    <header
+      class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200"
+    >
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="../index.html"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border hover:bg-slate-50"
+          >
+            <span class="text-lg">←</span>
+            <span class="text-sm">Volver al simulador</span>
+          </a>
+          <span class="hidden sm:inline text-slate-300">|</span>
+          <h1 class="text-base md:text-lg font-semibold">
+            Fuentes oficiales y evidencia
+          </h1>
+        </div>
+        <span
+          class="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-medium text-emerald-700 border border-emerald-100"
+        >
+          Versión educativa
+        </span>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6 space-y-10">
+      <!-- RESUMEN NACIONAL -->
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight">
+          1) Uso del agua y riego en Colombia — Resumen
+        </h2>
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+          <ul class="list-disc pl-6 space-y-2 text-sm">
+            <li>
+              La agricultura representa alrededor del
+              <strong>54% del total de extracciones de agua</strong> en Colombia
+              (IDEAM, 2015), con un uso de <strong>6.391 km³</strong> del total
+              de <strong>11.767 km³</strong> extraídos.
+            </li>
+            <li>
+              Colombia tiene aproximadamente
+              <strong>900.000 ha</strong> equipadas con infraestructura de
+              riego, concentradas en zonas cálidas del centro, valles del
+              Magdalena y Cauca, Tolima, sectores del noreste y costa Caribe.
+            </li>
+            <li>
+              El
+              <strong>Plan Nacional de Riego 2020–2039 (MADR/UPRA)</strong>
+              identifica un potencial de
+              <strong>18.456.749 ha</strong> irrigables; cobertura actual
+              ~<strong>6%</strong> y meta 2039: <strong>10%</strong> (~1,8 Mha
+              bajo riego).
+            </li>
+            <li>
+              La distribución regional se concentra en áreas de alta producción
+              agrícola; se evidencia <strong>baja eficiencia</strong> en
+              sistemas actuales con impactos ambientales.
+            </li>
+            <li>
+              <strong>FAO AQUASTAT</strong> distingue entre
+              <em>extracción</em> (agua captada) y <em>consumo</em> (fracción no
+              retornada).
+            </li>
+            <li>
+              Existen diferencias entre fuentes oficiales por metodología,
+              periodo y cobertura. El rango para agricultura suele estar entre
+              <strong>50–60%</strong> (IDEAM, FAO, MADR).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TABLA INDICADORES -->
+      <section class="space-y-3">
+        <h3 class="text-lg font-semibold">
+          Tabla — Indicadores de riego y agua (Colombia)
+        </h3>
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-slate-600">
+              <tr>
+                <th class="py-2 px-3">Indicador</th>
+                <th class="py-2 px-3">Valor</th>
+                <th class="py-2 px-3">Año</th>
+                <th class="py-2 px-3">Fuente</th>
+                <th class="py-2 px-3">Enlace</th>
+              </tr>
+            </thead>
+            <tbody class="align-top">
+              <tr class="border-t">
+                <td class="py-2 px-3">
+                  % Extracciones de agua para agricultura
+                </td>
+                <td class="py-2 px-3">54%</td>
+                <td class="py-2 px-3">2015</td>
+                <td class="py-2 px-3">IDEAM / FAO AQUASTAT</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://www.fao.org/aquastat/es/countries-and-basins/country-profiles/country/COL/"
+                    target="_blank"
+                    rel="noopener"
+                    >Ver perfil FAO AQUASTAT</a
+                  >
+                </td>
+              </tr>
+
+              <tr class="border-t">
+                <td class="py-2 px-3">Potencial área irrigable</td>
+                <td class="py-2 px-3">18.456.749 ha</td>
+                <td class="py-2 px-3">2017</td>
+                <td class="py-2 px-3">MADR / UPRA</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://www.minagricultura.gov.co/Normatividad/Resoluciones/RESOLUCIÓN%20NO.%20000311%20DE%202020.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >Resolución 00311 de 2020</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Cobertura actual de riego (%)</td>
+                <td class="py-2 px-3">~6%</td>
+                <td class="py-2 px-3">2020s</td>
+                <td class="py-2 px-3">MADR / UPRA</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://www.minagricultura.gov.co/Normatividad/Resoluciones/RESOLUCIÓN%20NO.%20000311%20DE%202020.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >Resolución 00311 de 2020</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Meta cobertura riego (%)</td>
+                <td class="py-2 px-3">10%</td>
+                <td class="py-2 px-3">2039</td>
+                <td class="py-2 px-3">MADR / UPRA</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://www.minagricultura.gov.co/Normatividad/Resoluciones/RESOLUCIÓN%20NO.%20000311%20DE%202020.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >Resolución 00311 de 2020</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="mt-2">
+          <summary class="cursor-pointer text-sm font-semibold text-slate-700">
+            Notas metodológicas (mostrar/ocultar)
+          </summary>
+          <div class="mt-2 text-sm text-slate-700 space-y-2">
+            <p>
+              <strong>Extracción</strong>: volumen total captado de fuentes
+              superficiales y subterráneas para agricultura, industria y consumo
+              doméstico. <strong>Consumo</strong>: fracción del agua extraída
+              que no retorna (evaporación/incorporación).
+            </p>
+            <p>
+              IDEAM estima demandas sectoriales con balances hídricos por unidad
+              hidrográfica y estudios regionales; FAO AQUASTAT compila datos
+              oficiales con posible rezago temporal.
+            </p>
+            <p>
+              MADR/UPRA estima potencial irrigable con análisis multicriterio
+              (suelo, agua, rentabilidad, sostenibilidad) para priorizar
+              inversiones.
+            </p>
+            <p>
+              Las discrepancias surgen por periodos de referencia, cobertura
+              (formal/informal), metodologías y actualizaciones estadísticas.
+            </p>
+            <p>
+              El PND y el sector ambiente señalan baja eficiencia de riego e
+              impactos ambientales; se proponen mejoras de infraestructura y
+              gobernanza hídrica.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- EFICIENCIA POR MÉTODO -->
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight">
+          2) Eficiencia de riego (η) y buenas prácticas
+        </h2>
+        <p class="text-sm">
+          La eficiencia típica por método y factores que la afectan:
+        </p>
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-slate-600">
+              <tr>
+                <th class="py-2 px-3">Método</th>
+                <th class="py-2 px-3">η típico (%)</th>
+                <th class="py-2 px-3">Rango reportado (%)</th>
+                <th class="py-2 px-3">Condiciones que afectan η</th>
+                <th class="py-2 px-3">Fuente / Enlace</th>
+              </tr>
+            </thead>
+            <tbody class="align-top">
+              <tr class="border-t">
+                <td class="py-2 px-3">Riego por gravedad (surcos)</td>
+                <td class="py-2 px-3">40–60</td>
+                <td class="py-2 px-3">35–65</td>
+                <td class="py-2 px-3">
+                  Nivelación, mantenimiento, diseño, operación
+                </td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://openknowledge.fao.org/server/api/core/bitstreams/d687d2d2-f533-4751-aafa-fc6b2f1b6568/content"
+                    target="_blank"
+                    rel="noopener"
+                    >FAO — Irrigation & Drainage</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Riego por aspersión</td>
+                <td class="py-2 px-3">75–85</td>
+                <td class="py-2 px-3">70–90</td>
+                <td class="py-2 px-3">
+                  Viento, calibración, mantenimiento, diseño, calidad del agua
+                </td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.agrosavia.co/"
+                    target="_blank"
+                    rel="noopener"
+                    >AGROSAVIA</a
+                  >,
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://dialnet.unirioja.es/descarga/articulo/243625.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >Documento académico</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Microirrigación (goteo)</td>
+                <td class="py-2 px-3">85–95</td>
+                <td class="py-2 px-3">80–98</td>
+                <td class="py-2 px-3">
+                  Mantenimiento, obstrucción de emisores, diseño, operación
+                </td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://www.minagricultura.gov.co/Normatividad/Resoluciones/RESOLUCIÓN%20NO.%20000091%20DE%202020.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >MADR — PN Riego</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4">
+          <h4 class="font-semibold mb-2">Recomendaciones prácticas</h4>
+          <ul class="list-disc pl-6 space-y-1.5 text-sm">
+            <li>
+              Nivelar terrenos en riego por gravedad para reducir escorrentía y
+              percolación.
+            </li>
+            <li>
+              Calibrar y mantener aspersores/emisores para evitar pérdidas y
+              bloqueos.
+            </li>
+            <li>
+              Organización de usuarios y capacitación para mejorar operación y
+              distribución.
+            </li>
+            <li>
+              Priorizar microirrigación en zonas cálidas/secas; vigilar calidad
+              del agua (filtrado).
+            </li>
+            <li>
+              Mantener infraestructura (canales/embalses) para reducir fugas y
+              evaporación.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ET0 Y KC -->
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight">
+          3) ET₀ regional y Kc por cultivo/etapa
+        </h2>
+        <p class="text-sm">
+          La evapotranspiración de referencia (ET₀) varía por región, altitud y
+          estación. En valles cálidos puede llegar a
+          <strong>5–6 mm/día</strong>, mientras que en el altiplano andino suele
+          ser <strong>2–3 mm/día</strong>. IDEAM calcula ET₀ en Colombia con el
+          método <strong>FAO Penman–Monteith</strong> (139 estaciones,
+          1980–2016, interpolación espacial).
+        </p>
+
+        <h4 class="font-semibold">Tabla 1 — ET₀ en Colombia (referencial)</h4>
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-slate-600">
+              <tr>
+                <th class="py-2 px-3">Región / Altitud / Estación</th>
+                <th class="py-2 px-3">ET₀ típico (mm/día)</th>
+                <th class="py-2 px-3">Fuente</th>
+                <th class="py-2 px-3">Enlace</th>
+              </tr>
+            </thead>
+            <tbody class="align-top">
+              <tr class="border-t">
+                <td class="py-2 px-3">Valle del Magdalena (zona cálida)</td>
+                <td class="py-2 px-3">4.5 – 6.2</td>
+                <td class="py-2 px-3">IDEAM (2021)</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="http://archivo.ideam.gov.co/documents/21021/124446224/Estimaci%C3%B3n+de+la+Evapotranspiraci%C3%B3n+de+referencia+(ETo)+en+Colombia/c02808dd-4910-4b48-a11b-3c3f9e7e0d73"
+                    target="_blank"
+                    rel="noopener"
+                    >Documento IDEAM</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Altiplano Andino (Bogotá, Tunja)</td>
+                <td class="py-2 px-3">2.0 – 3.0</td>
+                <td class="py-2 px-3">IDEAM (2021)</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="http://archivo.ideam.gov.co/documents/21021/124446224/Estimaci%C3%B3n+de+la+Evapotranspiraci%C3%B3n+de+referencia+(ETo)+en+Colombia/c02808dd-4910-4b48-a11b-3c3f9e7e0d73"
+                    target="_blank"
+                    rel="noopener"
+                    >Documento IDEAM</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Región Caribe (Cesar, La Guajira)</td>
+                <td class="py-2 px-3">4.8 – 5.6</td>
+                <td class="py-2 px-3">IDEAM (2017)</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="http://www.ideam.gov.co/documents/21021/21147/VALIDACION+DE+LAS+FORMULASDE+ETO+PARA+COLOMBIA/fd58c66b-3dfd-4997-b793-db35292127a7"
+                    target="_blank"
+                    rel="noopener"
+                    >Validación ETo IDEAM</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Región Andina (zonas cafetaleras)</td>
+                <td class="py-2 px-3">3.5 – 4.5</td>
+                <td class="py-2 px-3">AGROSAVIA / FAO-56</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.fao.org/4/x0490e/x0490e0b.htm"
+                    target="_blank"
+                    rel="noopener"
+                    >FAO-56 Cap. 6</a
+                  >
+                  &nbsp;|&nbsp;
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.agrosavia.co"
+                    target="_blank"
+                    rel="noopener"
+                    >AGROSAVIA</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="font-semibold mt-6">Tabla 2 — Kc por cultivo y etapa</h4>
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-slate-600">
+              <tr>
+                <th class="py-2 px-3">Cultivo</th>
+                <th class="py-2 px-3">Etapa</th>
+                <th class="py-2 px-3">Kc</th>
+                <th class="py-2 px-3">Fuente</th>
+                <th class="py-2 px-3">Enlace</th>
+              </tr>
+            </thead>
+            <tbody class="align-top">
+              <tr class="border-t">
+                <td class="py-2 px-3">Papa</td>
+                <td class="py-2 px-3">Inicial</td>
+                <td class="py-2 px-3">0.70</td>
+                <td class="py-2 px-3">FAO-56</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.fao.org/4/x0490e/x0490e0b.htm"
+                    target="_blank"
+                    rel="noopener"
+                    >Cap. 6</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Papa</td>
+                <td class="py-2 px-3">Desarrollo/Medio</td>
+                <td class="py-2 px-3">1.15</td>
+                <td class="py-2 px-3">FAO / Estudios Colombia</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.agrosavia.co"
+                    target="_blank"
+                    rel="noopener"
+                    >AGROSAVIA</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Papa</td>
+                <td class="py-2 px-3">Madurez</td>
+                <td class="py-2 px-3">0.75</td>
+                <td class="py-2 px-3">FAO-56</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.fao.org/4/x0490e/x0490e0b.htm"
+                    target="_blank"
+                    rel="noopener"
+                    >Cap. 6</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Maíz</td>
+                <td class="py-2 px-3">Inicial / Pico / Madurez</td>
+                <td class="py-2 px-3">0.30 / 1.20 / 0.50</td>
+                <td class="py-2 px-3">FAO-56</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline"
+                    href="https://www.fao.org/4/x0490e/x0490e0b.htm"
+                    target="_blank"
+                    rel="noopener"
+                    >Cap. 6</a
+                  >
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-3">Café</td>
+                <td class="py-2 px-3">Madurez</td>
+                <td class="py-2 px-3">~1.10</td>
+                <td class="py-2 px-3">Leal-Echeverri (2021)</td>
+                <td class="py-2 px-3">
+                  <a
+                    class="text-emerald-700 underline break-all"
+                    href="https://pdfs.semanticscholar.org/5d90/cdcd24d4aab55216df782f885c2ebfc73247.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >PDF</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="mt-3">
+          <summary class="cursor-pointer text-sm font-semibold text-slate-700">
+            Metodología FAO Penman–Monteith (resumen)
+          </summary>
+          <div class="mt-2 text-sm space-y-2">
+            <p>
+              Variables requeridas: temperatura (máx, mín, media), humedad
+              relativa, radiación solar, velocidad del viento, altitud, latitud
+              y día del año.
+            </p>
+            <pre
+              class="text-[12px] leading-5 bg-slate-50 border border-slate-200 rounded-lg p-3 overflow-x-auto"
+            >
+ET₀ = [0.408·Δ·(Rn − G) + γ·(900/(T+273))·u₂·(eₛ − eₐ)] / [Δ + γ·(1 + 0.34·u₂)]
+          </pre
+            >
+          </div>
+        </details>
+      </section>
+
+      <!-- BIBLIOGRAFÍA -->
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight">
+          4) Bibliografía (APA simplificada)
+        </h2>
+        <ul class="list-disc pl-6 space-y-2 text-sm">
+          <li>
+            FAO. (2020). <em>AQUASTAT Country Profile — Colombia</em>.
+            Recuperado de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="https://www.fao.org/aquastat/es/countries-and-basins/country-profiles/country/COL/"
+              target="_blank"
+              rel="noopener"
+              >https://www.fao.org/aquastat/…/COL/</a
+            >
+          </li>
+          <li>
+            IDEAM. (2021).
+            <em
+              >Estimación de la evapotranspiración de referencia (ETo) en
+              Colombia</em
+            >. Recuperado de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="http://archivo.ideam.gov.co/documents/21021/124446224/Estimaci%C3%B3n+de+la+Evapotranspiraci%C3%B3n+de+referencia+(ETo)+en+Colombia/c02808dd-4910-4b48-a11b-3c3f9e7e0d73"
+              target="_blank"
+              rel="noopener"
+              >enlace IDEAM</a
+            >
+          </li>
+          <li>
+            MADR / UPRA. (2020).
+            <em>Plan Nacional de Riego y Drenaje 2020–2039</em> (Res. 00311 de
+            2020). Recuperado de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="https://www.minagricultura.gov.co/Normatividad/Resoluciones/RESOLUCIÓN%20NO.%20000311%20DE%202020.pdf"
+              target="_blank"
+              rel="noopener"
+              >enlace oficial</a
+            >
+          </li>
+          <li>
+            MinAmbiente. (2023).
+            <em>Informe al Congreso — Sector Ambiente 2022–2023</em>. Recuperado
+            de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="https://www.minambiente.gov.co/wp-content/uploads/2023/07/Informe-al-Congreso-Sector-Ambiente-2022-2023.pdf"
+              target="_blank"
+              rel="noopener"
+              >enlace oficial</a
+            >
+          </li>
+          <li>
+            DANE. (2014). <em>Censo Nacional Agropecuario</em>. Recuperado de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="https://www.dane.gov.co/index.php/estadisticas-por-tema/agropecuario/censo-nacional-agropecuario-2014"
+              target="_blank"
+              rel="noopener"
+              >enlace oficial</a
+            >
+          </li>
+          <li>
+            FAO. (1998).
+            <em
+              >Crop Evapotranspiration (FAO Irrigation and Drainage Paper No.
+              56)</em
+            >. Recuperado de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="https://www.fao.org/4/x0490e/x0490e00.htm"
+              target="_blank"
+              rel="noopener"
+              >enlace FAO</a
+            >
+          </li>
+          <li>
+            Leal-Echeverri, E. (2021). <em>Requerimientos hídricos en café</em>.
+            Recuperado de
+            <a
+              class="text-emerald-700 underline break-all"
+              href="https://pdfs.semanticscholar.org/5d90/cdcd24d4aab55216df782f885c2ebfc73247.pdf"
+              target="_blank"
+              rel="noopener"
+              >PDF</a
+            >
+          </li>
+        </ul>
+        <p class="text-xs text-slate-500">
+          *Algunas URLs pueden ser repositorios intermedios; prioriza siempre
+          documentos oficiales cuando estén disponibles.
+        </p>
+      </section>
+
+      <footer class="pt-6 text-xs text-slate-500">
+        UNIMINUTO · Electiva CMD · Ingeniería y Desarrollo Regional — Fuentes
+        oficiales (prototipo educativo)
+      </footer>
+    </main>
+  </body>
+</html>

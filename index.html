@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simulador de Riego Eficiente · UNIMINUTO</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body
+    class="h-full bg-gradient-to-br from-sky-50 via-emerald-50 to-white text-slate-800"
+  >
+    <!-- NAV -->
+    <header
+      class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-xl bg-emerald-500/10 flex items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-emerald-600"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                stroke-width="2"
+                d="M12 22c4.418 0 8-3.582 8-8M4 14c0-4.418 3.582-8 8-8m0 0V2m0 4c1.657 0 3 1.343 3 3S13.657 12 12 12s-3-1.343-3-3 1.343-3 3-3z"
+              />
+            </svg>
+          </div>
+          <a
+            href="./index.html"
+            class="text-lg md:text-xl font-semibold tracking-tight hover:text-emerald-700"
+          >
+            Simulador de Riego Eficiente
+          </a>
+          <span class="hidden sm:inline text-slate-400">·</span>
+          <span class="hidden sm:inline text-sm text-slate-600"
+            >UNIMINUTO · Electiva CMD</span
+          >
+        </div>
+        <nav class="flex items-center gap-3">
+          <a
+            class="nav-link"
+            href="./htmls/guide.html"
+            target="_blank"
+            rel="noopener"
+            >Guía</a
+          >
+          <a
+            class="nav-link"
+            href="./htmls/sources.html"
+            target="_blank"
+            rel="noopener"
+            >Fuentes</a
+          >
+          <a
+            class="nav-link"
+            href="./htmls/about.html"
+            target="_blank"
+            rel="noopener"
+            >Acerca de</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 xl:grid-cols-3 gap-6"
+    >
+      <!-- PANEL 1: Configuración -->
+      <!-- PANEL 1: Configuración (versión estética mejorada) -->
+      <section class="xl:col-span-1">
+        <div
+          class="rounded-2xl border border-slate-200/80 bg-white/90 shadow-sm"
+        >
+          <!-- Header -->
+          <div
+            class="flex items-center justify-between px-5 py-4 border-b border-slate-200/70"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600"
+              >
+                <i data-feather="sliders" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h2
+                  class="text-base font-semibold tracking-tight text-slate-800"
+                >
+                  Configuración del escenario
+                </h2>
+                <p class="text-xs text-slate-500">
+                  Define variables agronómicas, clima y riego
+                </p>
+              </div>
+            </div>
+            <span
+              class="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-medium text-emerald-700 border border-emerald-100"
+            >
+              Demo educativa
+            </span>
+          </div>
+
+          <!-- Body -->
+          <form
+            id="formSim"
+            class="px-5 py-5 space-y-6"
+            aria-describedby="formHelp"
+          >
+            <!-- Grupo: Cultivo -->
+            <div>
+              <div class="mb-2 flex items-center gap-2">
+                <i data-feather="leaf" class="w-4 h-4 text-emerald-600"></i>
+                <h3 class="text-sm font-semibold text-slate-700">Cultivo</h3>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Cultivo</span
+                  >
+                  <select
+                    id="crop"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                  ></select>
+                </label>
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Etapa fenológica</span
+                  >
+                  <select
+                    id="stage"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                  ></select>
+                </label>
+              </div>
+            </div>
+
+            <!-- Divider suave -->
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+            ></div>
+
+            <!-- Grupo: Clima y región -->
+            <div>
+              <div class="mb-2 flex items-center gap-2">
+                <i data-feather="sun" class="w-4 h-4 text-amber-500"></i>
+                <h3 class="text-sm font-semibold text-slate-700">Ambiente</h3>
+              </div>
+              <div class="grid grid-cols-3 gap-4">
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Suelo</span
+                  >
+                  <select
+                    id="soil"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                  ></select>
+                </label>
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Clima</span
+                  >
+                  <select
+                    id="climate"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                  >
+                    <option value="seco">Seco</option>
+                    <option value="templado" selected>Templado</option>
+                    <option value="lluvioso">Lluvioso</option>
+                  </select>
+                  <span class="mt-1 block text-[11px] text-slate-500"
+                    >Se usa si “Región” = Personalizado.</span
+                  >
+                </label>
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Región (ET₀ preset)</span
+                  >
+                  <select
+                    id="region"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                  >
+                    <option value="altiplano">Altiplano (3–4 mm/d)</option>
+                    <option value="valles">Valles/Llanos (5–6 mm/d)</option>
+                    <option value="tropical">Trópico húmedo (~3 mm/d)</option>
+                    <option value="custom" selected>Personalizado</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div
+              class="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+            ></div>
+
+            <!-- Grupo: Área y método -->
+            <div>
+              <div class="mb-2 flex items-center gap-2">
+                <i data-feather="droplet" class="w-4 h-4 text-sky-600"></i>
+                <h3 class="text-sm font-semibold text-slate-700">Riego</h3>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Área (m²)</span
+                  >
+                  <input
+                    id="area"
+                    type="number"
+                    min="1"
+                    value="1000"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                  />
+                </label>
+                <label class="block">
+                  <span class="block text-xs font-medium text-slate-600 mb-1"
+                    >Método de riego</span
+                  >
+                  <div class="flex gap-2">
+                    <select
+                      id="method"
+                      class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                    >
+                      <option value="goteo">Goteo</option>
+                      <option value="aspersion">Aspersión</option>
+                      <option value="gravedad">Gravedad</option>
+                    </select>
+                    <button
+                      type="button"
+                      id="openEta"
+                      class="shrink-0 rounded-xl border border-slate-200 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                    >
+                      η
+                    </button>
+                  </div>
+                  <div class="mt-2 flex flex-wrap gap-1.5">
+                    <span
+                      class="rounded-full border border-emerald-100 bg-emerald-50 px-2 py-0.5 text-[11px] text-emerald-700"
+                      >Goteo ≈ 0.90</span
+                    >
+                    <span
+                      class="rounded-full border border-sky-100 bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700"
+                      >Aspersión ≈ 0.75</span
+                    >
+                    <span
+                      class="rounded-full border border-amber-100 bg-amber-50 px-2 py-0.5 text-[11px] text-amber-700"
+                      >Gravedad ≈ 0.60</span
+                    >
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Grupo: Operación -->
+            <div class="grid grid-cols-2 gap-4">
+              <label class="block">
+                <span class="block text-xs font-medium text-slate-600 mb-1"
+                  >Agua aplicada (L)</span
+                >
+                <input
+                  id="water"
+                  type="number"
+                  min="0"
+                  value="500"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                />
+              </label>
+              <label class="block">
+                <span class="block text-xs font-medium text-slate-600 mb-1"
+                  >Horario</span
+                >
+                <select
+                  id="schedule"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                >
+                  <option value="manana">Mañana</option>
+                  <option value="tarde">Tarde</option>
+                  <option value="noche">Noche</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Botones -->
+            <div class="grid grid-cols-2 gap-3 pt-1">
+              <button
+                type="button"
+                id="simulateBtn"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-emerald-700"
+              >
+                <i data-feather="play-circle" class="w-5 h-5"></i> Simular
+              </button>
+              <button
+                type="button"
+                id="saveBtn"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-emerald-700 border border-emerald-200 hover:bg-emerald-50"
+              >
+                <i data-feather="save" class="w-5 h-5"></i> Guardar
+              </button>
+            </div>
+
+            <!-- Nota técnica -->
+            <div
+              class="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3"
+            >
+              <p
+                id="formHelp"
+                class="text-[12px] leading-relaxed text-slate-600"
+              >
+                <span class="font-semibold">Fórmula:</span> ETc = ET₀ × Kc. Se
+                considera lluvia (mm), eficiencia del método (η) y conversión
+                <span class="font-mono">1 mm = 1 L/m²</span>.
+                <span class="text-slate-500"
+                  >Consulta fuentes en la sección “Fuentes”.</span
+                >
+              </p>
+            </div>
+
+            <!-- Sugerencia dinámica -->
+            <div
+              class="rounded-xl border border-emerald-200 bg-emerald-50/70 px-4 py-3"
+            >
+              <h4 class="mb-0.5 text-[13px] font-semibold text-emerald-800">
+                Sugerencia
+              </h4>
+              <p id="tip" class="text-[13px] text-emerald-900">
+                Ajusta el riego si la productividad supera 95% o baja de 60%.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- PANEL 2: Resultados + Recomendador -->
+      <section class="xl:col-span-2">
+        <div class="card glass mb-6">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <i data-feather="activity" class="w-5 h-5 text-sky-600"></i>
+              <h2 class="text-lg font-semibold">Resultados de la simulación</h2>
+            </div>
+            <span id="timestamp" class="text-xs text-slate-500"></span>
+          </div>
+
+          <div class="grid md:grid-cols-5 gap-4">
+            <div class="stat md:col-span-1">
+              <p class="stat-label">Productividad estimada</p>
+              <p id="productivity" class="stat-value">— %</p>
+            </div>
+            <div class="stat md:col-span-1">
+              <p class="stat-label">Consumo de agua</p>
+              <p id="waterUsed" class="stat-value">— L</p>
+            </div>
+            <div class="stat md:col-span-1">
+              <p class="stat-label">ET₀ / Kc / ETc</p>
+              <p id="etInfo" class="text-sm font-medium text-slate-800">—</p>
+            </div>
+            <div class="stat md:col-span-1">
+              <p class="stat-label">Recomendado (L)</p>
+              <p id="recLiters" class="stat-value">—</p>
+            </div>
+            <div class="stat md:col-span-1">
+              <p class="stat-label">Costo estimado</p>
+              <p id="cost" class="stat-value">—</p>
+              <p class="text-xs text-slate-500">Tarifa agua: COP/m³</p>
+              <input
+                id="price"
+                type="number"
+                min="0"
+                value="3500"
+                class="form-control mt-1"
+              />
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <!-- Altura explícita para que el chart se vea siempre -->
+            <canvas id="chart" class="w-full h-64"></canvas>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center gap-3">
+            <button id="exportPng" class="btn-outline">
+              <i data-feather="image" class="w-4 h-4"></i> Exportar gráfica
+              (PNG)
+            </button>
+            <button id="exportCsv" class="btn-outline">
+              <i data-feather="download" class="w-4 h-4"></i> Exportar historial
+              (CSV)
+            </button>
+            <label class="btn-outline cursor-pointer">
+              <i data-feather="upload" class="w-4 h-4"></i> Importar historial
+              (JSON)
+              <input
+                id="importJson"
+                type="file"
+                accept="application/json"
+                class="hidden"
+              />
+            </label>
+            <button id="clearHistory" class="btn-danger">
+              <i data-feather="trash-2" class="w-4 h-4"></i> Limpiar historial
+            </button>
+          </div>
+        </div>
+
+        <!-- Recomendador / Objetivo -->
+        <div class="card glass mb-6">
+          <div class="flex items-center gap-2 mb-3">
+            <i data-feather="target" class="w-5 h-5 text-emerald-600"></i>
+            <h3 class="font-semibold">
+              Recomendador (objetivo de productividad)
+            </h3>
+          </div>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div>
+              <label class="form-label" for="targetProd">Meta (%)</label>
+              <input
+                id="targetProd"
+                type="number"
+                min="10"
+                max="100"
+                value="85"
+                class="form-control"
+              />
+            </div>
+            <div class="md:col-span-2">
+              <label class="form-label">Resultado</label>
+              <p id="optResult" class="text-sm font-medium">—</p>
+            </div>
+            <div class="flex items-end">
+              <button id="optimizeBtn" class="btn-primary w-full">
+                <i data-feather="zap" class="w-4 h-4"></i> Calcular óptimo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sensibilidad -->
+        <div class="card glass mb-6">
+          <div class="flex items-center gap-2 mb-3">
+            <i data-feather="trending-up" class="w-5 h-5 text-violet-600"></i>
+            <h3 class="font-semibold">
+              Análisis de sensibilidad (agua → productividad)
+            </h3>
+          </div>
+          <canvas id="sensitivityChart"></canvas>
+        </div>
+
+        <!-- Historial y Comparación -->
+        <div class="card glass">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-feather="clock" class="w-5 h-5 text-emerald-600"></i>
+              <h3 class="font-semibold">Historial de simulaciones</h3>
+            </div>
+          </div>
+          <div
+            id="history"
+            class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-3"
+          ></div>
+        </div>
+
+        <div class="mt-6 card glass">
+          <div class="flex items-center gap-2 mb-3">
+            <i data-feather="columns" class="w-5 h-5 text-violet-600"></i>
+            <h3 class="font-semibold">Comparar escenarios (elige dos)</h3>
+          </div>
+          <div id="compare" class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead class="text-left text-slate-600">
+                <tr>
+                  <th class="py-2 pr-4">Escenario A</th>
+                  <th class="py-2 pr-4">Escenario B</th>
+                  <th class="py-2 pr-4">Diferencias</th>
+                </tr>
+              </thead>
+              <tbody id="compareBody" class="align-top"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Calendario semanal -->
+        <div class="mt-6 card glass">
+          <div class="flex items-center gap-2 mb-3">
+            <i data-feather="calendar" class="w-5 h-5 text-sky-700"></i>
+            <h3 class="font-semibold">Calendario semanal recomendado</h3>
+          </div>
+          <div class="grid md:grid-cols-7 gap-2" id="weekPlan"></div>
+          <div class="mt-3">
+            <button id="exportWeekCsv" class="btn-outline">
+              <i data-feather="download" class="w-4 h-4"></i> Exportar
+              calendario (CSV)
+            </button>
+          </div>
+        </div>
+
+        <!-- Contexto Colombia -->
+        <div class="card glass mt-6">
+          <div class="flex items-center gap-2 mb-2">
+            <i data-feather="book-open" class="w-5 h-5 text-emerald-700"></i>
+            <h3 class="font-semibold">Contexto Colombia (fuentes oficiales)</h3>
+          </div>
+          <ul class="list-disc pl-5 text-sm space-y-1">
+            <li>
+              La agricultura concentra una parte mayoritaria de las extracciones
+              de agua a nivel nacional (referencias FAO/IDEAM).
+            </li>
+            <li>
+              El área equipada con riego en Colombia ronda el orden de cientos
+              de miles de hectáreas; existen diferencias regionales.
+            </li>
+            <li>
+              La eficiencia de riego (η) típica por método: gravedad≈60%,
+              aspersión≈75%, goteo≈90%.
+            </li>
+          </ul>
+          <p class="text-xs text-slate-500 mt-2">
+            Ver detalles y referencias en
+            <a href="./htmls/sources.html" class="text-emerald-700 underline"
+              >Fuentes oficiales</a
+            >.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-8 pb-8">
+      <div class="max-w-7xl mx-auto px-4 text-xs text-slate-500">
+        UNIMINUTO · Electiva CMD · Ingeniería y Desarrollo Regional — Simulador
+        educativo (prototipo)
+      </div>
+    </footer>
+
+    <!-- Modal Eficiencia η -->
+    <div
+      id="etaModal"
+      class="fixed inset-0 hidden items-center justify-center bg-black/30 z-50"
+    >
+      <div class="bg-white w-[min(680px,95vw)] rounded-2xl shadow-xl p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h4 class="font-semibold">Eficiencia por método (η) — Referencial</h4>
+          <button
+            id="closeEta"
+            class="rounded-lg px-3 py-1.5 text-sm border hover:bg-slate-50"
+          >
+            Cerrar
+          </button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="text-left text-slate-600">
+              <tr>
+                <th class="py-2 pr-4">Método</th>
+                <th class="py-2 pr-4">η típico (%)</th>
+                <th class="py-2 pr-4">Rango reportado</th>
+                <th class="py-2 pr-4">Notas</th>
+              </tr>
+            </thead>
+            <tbody class="align-top">
+              <tr>
+                <td class="py-2 pr-4">Gravedad / surcos</td>
+                <td class="py-2 pr-4">~60%</td>
+                <td class="py-2 pr-4">50–70%</td>
+                <td class="py-2 pr-4">
+                  Sensible a nivelación, escorrentía, manejo de turnos.
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Aspersión</td>
+                <td class="py-2 pr-4">~75%</td>
+                <td class="py-2 pr-4">65–80%</td>
+                <td class="py-2 pr-4">
+                  Viento y boquillas afectan uniformidad; presión adecuada.
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">Microirrigación / goteo</td>
+                <td class="py-2 pr-4">~90%</td>
+                <td class="py-2 pr-4">85–95%</td>
+                <td class="py-2 pr-4">
+                  Buen diseño/filtrado y mantenimiento sostienen η alta.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-slate-500 mt-3">
+          Valores de referencia educativos. Confirma con fuentes oficiales
+          (FAO/IDEAM/AGROSAVIA) en
+          <a href="./htmls/sources.html" class="text-emerald-700 underline"
+            >Fuentes oficiales</a
+          >.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // JS mínimo para abrir/cerrar modal η (usa clases Tailwind para esconder/mostrar)
+      document.addEventListener("DOMContentLoaded", () => {
+        const open = document.getElementById("openEta");
+        const close = document.getElementById("closeEta");
+        const modal = document.getElementById("etaModal");
+        if (open && close && modal) {
+          open.addEventListener("click", () =>
+            modal.classList.remove("hidden")
+          );
+          close.addEventListener("click", () => modal.classList.add("hidden"));
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) modal.classList.add("hidden");
+          });
+        }
+      });
+    </script>
+
+    <!-- Scripts (orden importa) -->
+    <script src="./javascripts/data.js"></script>
+    <script src="./javascripts/simulate.js"></script>
+    <script src="./javascripts/storage.js"></script>
+    <script src="./javascripts/optimizer.js"></script>
+    <script src="./javascripts/export.js"></script>
+    <script src="./javascripts/ui.js"></script>
+    <script src="./javascripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Guía de uso — Simulador de Riego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="bg-white text-slate-800">
+    <!-- Header fijo con volver -->
+    <header
+      class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200"
+    >
+      <div
+        class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="../index.html"
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border hover:bg-slate-50"
+          >
+            <span class="text-lg">←</span>
+            <span class="text-sm">Volver al simulador</span>
+          </a>
+          <span class="hidden sm:inline text-slate-300">|</span>
+          <h1 class="text-lg font-semibold">Guía de uso</h1>
+        </div>
+        <a href="#indice" class="text-sm text-slate-600 hover:text-emerald-700"
+          >Ir al índice</a
+        >
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6 space-y-8">
+      <!-- Resumen -->
+      <section class="space-y-2">
+        <h2 class="text-2xl font-bold">Resumen</h2>
+        <p>
+          Este simulador te ayuda a tomar decisiones de riego simples y
+          fundamentadas. Calcula la
+          <strong>demanda hídrica del cultivo</strong> (ETc), considera
+          <strong>lluvia</strong>, <strong>eficiencia del método</strong> y
+          convierte entre <strong>litros (L)</strong> y
+          <strong>milímetros (mm)</strong> de agua sobre el lote. También
+          sugiere un <strong>volumen recomendado</strong>, estima
+          <strong>costos</strong> y ofrece
+          <strong>análisis de sensibilidad</strong> y un
+          <strong>calendario semanal</strong>.
+        </p>
+      </section>
+
+      <!-- Índice -->
+      <section id="indice" class="space-y-2">
+        <h2 class="text-xl font-semibold">Índice</h2>
+        <ol class="list-decimal pl-6 space-y-1">
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#entradas"
+              >Entradas del simulador</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#metodo"
+              >Cómo calcula la aplicación (metodología)</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#ejemplo"
+              >Ejemplo numérico completo</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#salidas"
+              >Salidas e interpretación</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#sensibilidad"
+              >Análisis de sensibilidad</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#calendario"
+              >Calendario semanal</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#limitaciones"
+              >Limitaciones y buenas prácticas</a
+            >
+          </li>
+          <li>
+            <a class="text-emerald-700 hover:underline" href="#glosario"
+              >Glosario</a
+            >
+          </li>
+        </ol>
+      </section>
+
+      <!-- Entradas -->
+      <section id="entradas" class="space-y-4">
+        <h2 class="text-xl font-semibold">1) Entradas del simulador</h2>
+        <div class="space-y-3">
+          <p>
+            <strong>Cultivo</strong> y
+            <strong>Etapa fenológica</strong> (inicial, desarrollo, medio,
+            final): determinan el <em>coeficiente de cultivo</em>
+            <strong>Kc</strong>. Cada etapa tiene un Kc distinto.
+          </p>
+          <p>
+            <strong>Suelo</strong> (arenoso, arcilloso, mixto): describe la
+            capacidad de retención. En esta versión no ajusta aún el cálculo del
+            día, pero se usa para el contexto y se planea integrar a balance
+            multi-día.
+          </p>
+          <p>
+            <strong>Clima</strong> (seco, templado, lluvioso): define
+            <strong>ET₀</strong> (evapotranspiración de referencia, mm/día). Es
+            un estimado representativo para simplificar.
+          </p>
+          <p>
+            <strong>Área</strong> del lote (m²): necesaria para convertir litros
+            a milímetros y viceversa.
+          </p>
+          <p>
+            <strong>Método de riego</strong> (goteo/aspersión/gravedad): define
+            la <strong>eficiencia η</strong> (fracción que realmente llega a las
+            raíces). Ej.: goteo 0.90.
+          </p>
+          <p>
+            <strong>Agua aplicada</strong> (L): litros que planeas aplicar en el
+            día.
+          </p>
+          <p>
+            <strong>Lluvia</strong> (mm): precipitación prevista para el día (mm
+            sobre el área).
+          </p>
+          <p>
+            <strong>Horario</strong> (mañana/tarde/noche): ajusta un factor
+            operativo (pérdidas menores en horas más frescas).
+          </p>
+          <p>
+            <strong>Precio agua</strong> ($/m³): para estimar el costo diario de
+            tu riego aplicado.
+          </p>
+        </div>
+      </section>
+
+      <!-- Metodología -->
+      <section id="metodo" class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          2) Cómo calcula la aplicación (metodología)
+        </h2>
+        <div class="space-y-3">
+          <p><strong>Paso A — Demanda del cultivo (ETc)</strong></p>
+          <ul class="list-disc pl-6">
+            <li>
+              <strong>ET₀</strong> (mm/día) es la demanda atmosférica de agua de
+              una “cubierta de referencia”. Aquí se elige por tipo de clima
+              (aprox.): seco ≈ 6, templado ≈ 4, lluvioso ≈ 3.
+            </li>
+            <li>
+              <strong>Kc</strong> es el coeficiente de cultivo (varía por
+              especie y etapa). Lo seleccionas vía cultivo + etapa.
+            </li>
+            <li><strong>ETc</strong> (mm/día) = <strong>ET₀ × Kc</strong>.</li>
+          </ul>
+
+          <p><strong>Paso B — Aportes de agua</strong></p>
+          <ul class="list-disc pl-6">
+            <li>
+              <strong>Lluvia efectiva</strong> (mm) = lluvia ingresada
+              (suponemos que toda es efectiva en el día para simplificar).
+            </li>
+            <li>
+              <strong>Riego efectivo</strong> (mm): conversión desde litros con
+              eficiencia:
+              <div class="mt-2 rounded-lg bg-slate-50 border p-3 text-sm">
+                1&nbsp;mm sobre 1&nbsp;m² = 1&nbsp;L<br />
+                <strong
+                  >Riego efectivo [mm] = (Agua [L] / Área [m²]) × η</strong
+                >
+              </div>
+            </li>
+            <li>
+              <strong>Aporte neto</strong> (mm) = lluvia (mm) + riego efectivo
+              (mm).
+            </li>
+          </ul>
+
+          <p><strong>Paso C — “Productividad” (proxy)</strong></p>
+          <ul class="list-disc pl-6">
+            <li>
+              Se usa un indicador simple para el día:
+              <div class="mt-2 rounded-lg bg-slate-50 border p-3 text-sm">
+                <strong
+                  >Productividad (%) = (Aporte neto / ETc) × 100 ×
+                  ajustes</strong
+                >
+              </div>
+              Ajustes = factor de <strong>horario</strong> (mañana 1.0, tarde
+              0.95, noche 0.9) × factor de <strong>cultivo</strong> (maíz 1.0,
+              papa 0.95, café 0.9).
+            </li>
+            <li>
+              Este % se <em>capa</em> entre 0 y 120 para evitar extremos no
+              realistas (en la UI se muestra hasta 120).
+            </li>
+          </ul>
+
+          <p><strong>Paso D — Recomendación de riego</strong></p>
+          <ul class="list-disc pl-6">
+            <li>Objetivo del día: cubrir ETc con lluvia + riego efectivo.</li>
+            <li>
+              Si <em>lluvia &lt; ETc</em>, se calcula el riego
+              <em>necesario</em> para cubrir el déficit considerando η:
+              <div class="mt-2 rounded-lg bg-slate-50 border p-3 text-sm">
+                Déficit [mm] = max(0, ETc − lluvia)<br />
+                <strong
+                  >Litros recomendados = (Déficit [mm] × Área [m²]) / η</strong
+                >
+              </div>
+            </li>
+          </ul>
+
+          <p><strong>Paso E — Costo estimado</strong></p>
+          <div class="rounded-lg bg-slate-50 border p-3 text-sm">
+            <strong
+              >Costo ($) = (Agua aplicada [L] / 1000) × Precio [$/m³]</strong
+            >
+          </div>
+
+          <p class="text-sm text-slate-600">
+            <em>Nota:</em> Este enfoque es educativo y simplificado (1 día).
+            Para manejo profesional, se recomienda balance hídrico multi-día y
+            mediciones locales.
+          </p>
+        </div>
+      </section>
+
+      <!-- Ejemplo numérico -->
+      <section id="ejemplo" class="space-y-4">
+        <h2 class="text-xl font-semibold">3) Ejemplo numérico completo</h2>
+        <div class="rounded-xl border p-4">
+          <p class="font-medium">Datos</p>
+          <ul class="list-disc pl-6">
+            <li>Clima: templado → ET₀ = 4 mm/d</li>
+            <li>
+              Cultivo: maíz · Etapa: medio → Kc ≈ 1.15 → ETc = 4 × 1.15 =
+              <strong>4.6 mm</strong>
+            </li>
+            <li>Área: 1000 m² (0.1 ha)</li>
+            <li>Método: goteo (η = 0.90)</li>
+            <li>Agua aplicada: 500 L</li>
+            <li>Lluvia: 2 mm</li>
+            <li>Horario: mañana (ajuste 1.0)</li>
+          </ul>
+          <p class="font-medium mt-3">Cálculos</p>
+          <ul class="list-disc pl-6">
+            <li>Riego efectivo (mm) = (500 L / 1000 m²) × 0.90 = 0.45 mm</li>
+            <li>
+              Aporte neto = lluvia 2.0 + riego 0.45 = <strong>2.45 mm</strong>
+            </li>
+            <li>
+              Productividad base = (2.45 / 4.6) × 100 = 53.3% → Ajuste horario ×
+              cultivo = 53.3% × 1.0 × 1.0 = <strong>53.3%</strong>
+            </li>
+            <li>
+              Déficit = max(0, 4.6 − 2.0) = 2.6 mm → Litros recomendados = (2.6
+              × 1000) / 0.90 = <strong>2889 L</strong> (aprox.)
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Salidas -->
+      <section id="salidas" class="space-y-4">
+        <h2 class="text-xl font-semibold">4) Salidas e interpretación</h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>
+            <strong>Productividad estimada (%):</strong> proxy de cobertura
+            hídrica diaria.
+          </li>
+          <li>
+            <strong>Consumo de agua (L):</strong> lo que declaraste como
+            aplicado.
+          </li>
+          <li><strong>ET₀ / Kc / ETc:</strong> demanda calculada del día.</li>
+          <li>
+            <strong>Recomendado (L):</strong> litros sugeridos para cubrir
+            déficit (si lo hay).
+          </li>
+          <li><strong>Costo estimado:</strong> con base en tu tarifa $/m³.</li>
+          <li>
+            <strong>Historial/Comparación:</strong> guarda y compara escenarios.
+          </li>
+          <li>
+            <strong>Exportar/Importar:</strong> PNG de la gráfica, CSV del
+            historial, importar JSON.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sensibilidad -->
+      <section id="sensibilidad" class="space-y-4">
+        <h2 class="text-xl font-semibold">5) Análisis de sensibilidad</h2>
+        <p>
+          Grafica cómo cambia la productividad si aumentas el agua aplicada
+          desde 0 hasta un máximo (p.ej. 6000 L). Útil para ver
+          <em>rendimientos decrecientes</em> y detectar el rango razonable de
+          aplicación.
+        </p>
+      </section>
+
+      <!-- Calendario -->
+      <section id="calendario" class="space-y-4">
+        <h2 class="text-xl font-semibold">6) Calendario semanal</h2>
+        <p>
+          Genera una pauta simple para 7 días a partir de la recomendación del
+          día. Se distribuye de forma práctica (mayor de lunes a viernes y menor
+          el fin de semana). Puedes <strong>exportar a CSV</strong> y editarlo
+          para tu campo.
+        </p>
+      </section>
+
+      <!-- Limitaciones -->
+      <section id="limitaciones" class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          7) Limitaciones y buenas prácticas
+        </h2>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>
+            Modelo diario y simplificado; no acumula humedad del suelo entre
+            días.
+          </li>
+          <li>
+            ET₀ y Kc son valores de referencia; para precisión, usa datos
+            locales y tablas específicas del cultivo.
+          </li>
+          <li>
+            La <strong>eficiencia (η)</strong> depende de diseño y operación
+            reales.
+          </li>
+          <li>
+            La lluvia efectiva puede ser menor a la precipitación bruta
+            (infiltración/escurriemiento).
+          </li>
+          <li>
+            Usa el simulador como <strong>herramienta educativa/guía</strong>,
+            no como reemplazo de asesoría técnica.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Glosario -->
+      <section id="glosario" class="space-y-3">
+        <h2 class="text-xl font-semibold">8) Glosario</h2>
+        <p>
+          <strong>ET₀</strong>: evapotranspiración de referencia (mm/día),
+          demanda atmosférica estándar.
+        </p>
+        <p>
+          <strong>Kc</strong>: coeficiente de cultivo; ajusta ET₀ según especie
+          y etapa.
+        </p>
+        <p><strong>ETc</strong>: demanda del cultivo = ET₀ × Kc (mm/día).</p>
+        <p>
+          <strong>Eficiencia (η)</strong>: proporción del agua aplicada que
+          aprovecha la planta (0 a 1).
+        </p>
+        <p>
+          <strong>1 mm = 1 L/m²</strong>: relación clave para convertir entre mm
+          y litros según el área.
+        </p>
+      </section>
+
+      <!-- Footer -->
+      <footer class="pt-6 text-xs text-slate-500">
+        UNIMINUTO · Electiva CMD · Ingeniería y Desarrollo Regional — Guía de
+        uso del simulador (versión educativa)
+      </footer>
+    </main>
+  </body>
+</html>

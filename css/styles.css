@@ -1,0 +1,123 @@
+/* Estilos utilitarios complementando Tailwind */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.7);
+}
+.card {
+  border: 1px solid rgb(226 232 240);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 2px 20px rgba(15, 23, 42, 0.03);
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  color: rgb(71 85 105);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.nav-link:hover {
+  color: rgb(4 120 87);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: rgb(71 85 105);
+}
+.form-control {
+  width: 100%;
+  border: 1px solid rgb(203 213 225);
+  border-radius: 0.75rem;
+  padding: 8px 10px;
+}
+.form-control:focus {
+  outline: none;
+  border-color: rgb(16 185 129);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 8px 12px;
+  background: rgb(5 150 105);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: rgb(4 120 87);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 8px 12px;
+  background: rgb(2 132 199);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background: rgb(3 105 161);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgb(203 213 225);
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+.btn-outline:hover {
+  background: rgba(15, 118, 110, 0.06);
+}
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgb(248 113 113);
+  color: rgb(220 38 38);
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+.btn-danger:hover {
+  background: rgba(254, 226, 226, 0.7);
+}
+
+.stat {
+  border: 1px solid rgb(226 232 240);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: rgb(100 116 139);
+}
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: rgb(15 23 42);
+}
+
+/* Modo oscuro básico */
+.dark body {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+.dark .card {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+.dark .form-control {
+  background: rgba(2, 6, 23, 0.4);
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.25);
+}
+.dark .nav-link:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
