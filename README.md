@@ -1,9 +1,9 @@
 # Simulador de Riego Eficiente – Colombia 🌱💧
 
-Prototipo educativo (UNIMINUTO) para **optimizar la lámina de riego**, **estimar costos (COP)** y **reducir el impacto hídrico** en el sector rural colombiano.  
-Basado en **ET₀ (FAO Penman–Monteith)**, **Kc (FAO-56)** y **eficiencia del método de riego (η)**.
+Prototipo educativo (UNIMINUTO) para **optimizar la lámina de riego**, **estimar costos ** y **reducir el impacto hídrico** en el sector rural colombiano.  
+Basado en  **eficiencia del método de riego **.
 
-**Demo:** https://jhoncastiblanco06.github.io/simulador-riego/  
+**Demo:** https://github.com/jhoncastiblanco06/simulador-riego
 
 **Video (YouTube):** https://www.youtube.com/watch?v=_N6mc1o2rEg
 
@@ -15,13 +15,13 @@ Basado en **ET₀ (FAO Penman–Monteith)**, **Kc (FAO-56)** y **eficiencia del 
 
 El **Simulador de Riego Eficiente** permite a un **agricultor**:
 
-1. **Configurar** el escenario (cultivo, etapa fenológica, suelo, región/ET₀, clima, método, área y horario).  
-2. **Calcular** la demanda hídrica (**ETc**) y la **productividad** estimada.  
-3. **Recomendar** litros de riego ajustando por **eficiencia del método (η)** y **lluvia**.  
-4. **Estimar** costos en **COP/m³**.  
+1. **Configurar** el escenario (cultivo, etapa fenológica, suelo, región, clima, método, área y horario).  
+2. **Calcular** la demanda hídrica y la **productividad** estimada.  
+3. **Recomendar** litros de riego ajustando por **eficiencia del método** y **lluvia**.  
+4. **Estimar** costos.  
 5. **Visualizar** gráficas (productividad, sensibilidad) y un **calendario semanal** sugerido.  
 6. **Guardar, comparar y exportar** escenarios (PNG/CSV) e **importar** históricos (JSON).  
-7. Consultar **fuentes oficiales** (FAO/IDEAM/MADR/UPRA) integradas en una página de apoyo.
+7. Consultar **fuentes oficiales** integradas en una página de apoyo.
 
 **Objetivo:** apoyar decisiones de riego **basadas en evidencia**, fomentando el **ahorro de agua** y la **reducción de costos**.
 
@@ -30,10 +30,10 @@ El **Simulador de Riego Eficiente** permite a un **agricultor**:
 ## Características
 
 - 🔧 Configuración completa del escenario (cultivo/etapa/suelo/región/método/área/horario/lluvia/tarifa).  
-- 🧮 Cálculo **ETc** con visualización de **ET₀ / Kc / ETc**.  
+- 🧮 Cálculo con visualización.  
 - 🎯 Recomendación de litros ajustada por **η** (gravedad/aspersión/goteo) y **lluvia**.  
-- 💸 Costo estimado en **COP** `((L / 1000) × tarifa (COP/m³))`.  
-- 📈 Gráficas de **productividad** y **análisis de sensibilidad** (agua → %) con exportación a **PNG**.  
+- 💸 Costo estimado en **COP**.  
+- 📈 Gráficas de **productividad** y **análisis de sensibilidad** con exportación a **PNG**.  
 - 📅 **Calendario semanal** de riego y exportación a **CSV**.  
 - 🧰 **Historial** (guardar/cargar/limpiar), **comparación** de escenarios, exportar **CSV**, importar **JSON**.  
 - 📚 **Fuentes oficiales** (tablas y bibliografía en APA) para transparencia.
